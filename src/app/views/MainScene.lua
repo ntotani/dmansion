@@ -2,6 +2,27 @@ local us = require("app.lib.moses")
 
 local MainScene = class("MainScene", cc.load("mvc").ViewBase)
 
+local ROOM_SIZE = 5
+local FLOOR_TILES = us.map(us.range(1, ROOM_SIZE * 3), function(i)
+    return us.map(us.range(1, ROOM_SIZE * 3), function() return 0 end)
+end)
+us.each({0, 1}, function(_, i)
+    us.each({0, 1}, function(_, j)
+        us.each(us.range(1, ROOM_SIZE), function(k)
+            us.each(us.range(1, ROOM_SIZE), function(l)
+                FLOOR_TILES[i * ROOM_SIZE * 2 + k][j * ROOM_SIZE * 2 + l] = 8 * 19
+            end)
+            local a = ROOM_SIZE + k
+            local b = math.ceil(ROOM_SIZE / 2) + j * ROOM_SIZE * 2
+            if i == 0 then
+                FLOOR_TILES[a][b] = 8 * 19
+            else
+                FLOOR_TILES[b][a] = 8 * 19
+            end
+        end)
+    end)
+end)
+
 local function getFrames(name, size)
     local texture = display.loadImage(name)
     local wid = texture:getPixelsWide()
@@ -20,7 +41,9 @@ local function map(name, size, idx)
     local layer = display.newLayer()
     us(idx):each(function(i, line)
         us(line):each(function(j, e)
-            display.newSprite(frames[e + 1]):move(size * (j - 0.5), size * (#idx - i + 0.5)):addTo(layer)
+            if e > 0 then
+                display.newSprite(frames[e + 1]):move(size * (j - 0.5), size * (#idx - i + 0.5)):addTo(layer)
+            end
         end)
     end)
     return layer
@@ -45,13 +68,19 @@ local function idx2pix(i, j)
 end
 
 function MainScene:onCreate()
-    local row = 20
-    local col = 11
-    map("tile.png", 16, us.map(us.range(row * 2), function(i)
-        return us.map(us.range(col * 2), function()
-            return 8 * 19
-        end)
-    end)):addTo(self)
+    local tileData = {}
+    for _, line in ipairs(FLOOR_TILES) do
+        for _ = 1, 3 do
+            local lineData = {}
+            for _, e in ipairs(line) do
+                for _ = 1, 3 do
+                    lineData[#lineData + 1] = e
+                end
+            end
+            tileData[#tileData + 1] = lineData
+        end
+    end
+    map("tile.png", 16, tileData):addTo(self)
     display.newSprite(getFrames("move_obj4.png", 16)[7]):move(idx2pix(8, 3)):addTo(self)
     local boyFrames = getFrames("hero.png", 96)
     local boy = display.newSprite(boyFrames[1]):move(idx2pix(10, 5)):addTo(self)
