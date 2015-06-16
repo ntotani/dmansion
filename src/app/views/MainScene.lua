@@ -2,6 +2,7 @@ local us = require("app.lib.moses")
 
 local MainScene = class("MainScene", cc.load("mvc").ViewBase)
 
+local TILE_SIZE = 48
 local ROOM_SIZE = 5
 local FLOOR_TILES = us.map(us.range(1, ROOM_SIZE * 3), function(i)
     return us.map(us.range(1, ROOM_SIZE * 3), function() return 0 end)
@@ -54,9 +55,9 @@ local function pix2idx(x, y)
         y = x.y
         x = x.x
     end
-    local i = math.floor(y / 32)
-    local j = math.floor(x / 32)
-    return {i = i, j = j}
+    local i = math.floor(y / TILE_SIZE)
+    local j = math.floor(x / TILE_SIZE)
+    return {i = #FLOOR_TILES - i - 1, j = j}
 end
 
 local function idx2pix(i, j)
@@ -64,7 +65,43 @@ local function idx2pix(i, j)
         j = i.j
         i = i.i
     end
-    return {x = j * 32 + 16, y = i * 32 + 16}
+    return {x = (j + 0.5) * TILE_SIZE, y = (#FLOOR_TILES - i - 0.5) * TILE_SIZE}
+end
+
+local function calcPath(from, to)
+    local memo = us(FLOOR_TILES):map(function(i, line)
+        return us(line):map(function(j, e)
+            return {dist = #FLOOR_TILES * #FLOOR_TILES[1], dir = nil}
+        end):value()
+    end):value()
+    memo[from.i + 1][from.j + 1].dist = 0
+    local queue = { from }
+    local dirs = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}}
+    while #queue > 0 do
+        local cur = table.remove(queue, 1)
+        if cur.i == to.i and cur.j == to.j then
+            break
+        end
+        us(dirs):map(function(_, e)
+            local dist = math.abs(e[1]) + math.abs(e[2]) > 1 and 1.1 or 1
+            return {i = cur.i + e[1], j = cur.j + e[2], dist = dist}
+        end):filter(function(_, e)
+            return e.i >= 0 and e.i < #FLOOR_TILES and e.j >= 0 and e.j < #FLOOR_TILES[1]
+        end):filter(function(_, e)
+            return FLOOR_TILES[e.i + 1][e.j + 1] > 0
+        end):each(function(_, e)
+            if memo[e.i + 1][e.j + 1].dist > memo[cur.i + 1][cur.j + 1].dist + e.dist then
+                memo[e.i + 1][e.j + 1].dist = memo[cur.i + 1][cur.j + 1].dist + e.dist
+                memo[e.i + 1][e.j + 1].dir = cur
+                queue[#queue + 1] = {i = e.i, j = e.j}
+            end
+        end)
+    end
+    local path = {to}
+    while memo[path[#path].i + 1][path[#path].j + 1].dir do
+        path[#path + 1] = memo[path[#path].i + 1][path[#path].j + 1].dir
+    end
+    return us.reverse(path)
 end
 
 function MainScene:onCreate()
@@ -80,26 +117,35 @@ function MainScene:onCreate()
             tileData[#tileData + 1] = lineData
         end
     end
-    map("tile.png", 16, tileData):addTo(self)
-    display.newSprite(getFrames("move_obj4.png", 16)[7]):move(idx2pix(8, 3)):addTo(self)
+    local mapLayer = map("tile.png", 16, tileData):addTo(self)
+    display.newSprite(getFrames("move_obj4.png", 16)[7]):move(idx2pix(2, 2)):addTo(mapLayer)
     local boyFrames = getFrames("hero.png", 96)
-    local boy = display.newSprite(boyFrames[1]):move(idx2pix(10, 5)):addTo(self)
+    local boy = display.newSprite(boyFrames[1]):move(idx2pix(12, 2)):addTo(mapLayer)
+    boy:setScale(0.5)
     boy:playAnimationForever(display.newAnimation({boyFrames[1], boyFrames[2], boyFrames[3], boyFrames[2]}, 0.25))
     
     local draw = cc.DrawNode:create():addTo(self):hide()
     draw:drawSolidRect(cc.p(20, 520), cc.p(340, 600), cc.c4f(0, 0, 0, 1))
     local mes = cc.Label:createWithSystemFont("うわああああああああ", "PixelMplus12", 24):move(display.cx, 560):addTo(self):hide()
     display.newLayer():addTo(self):onTouch(function(e)
-        local idx = pix2idx(e)
+        local idx = pix2idx(cc.pSub(e, cc.p(mapLayer:getPosition())))
+        --[[
         if idx.i == 8 and idx.j == 3 then
             draw:show()
             mes:show()
             return
         end
+        ]]
         draw:hide()
         mes:hide()
-        local pix = idx2pix(idx)
-        boy:moveTo({time = 0.5, x = pix.x, y = pix.y})
+        local path = calcPath(pix2idx(cc.p(boy:getPosition())), idx)
+        local acts = us.map(path, function(_, e)
+            return cc.MoveTo:create(0.2, idx2pix(e))
+        end)
+        boy:runAction(cc.Sequence:create(acts))
+    end)
+    self:onUpdate(function(dt)
+        mapLayer:move(display.cx - boy:getPositionX(), display.cy - boy:getPositionY())
     end)
 end
 
