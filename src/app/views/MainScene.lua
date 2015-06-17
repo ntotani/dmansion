@@ -123,12 +123,14 @@ function MainScene:onCreate()
     local boy = display.newSprite(boyFrames[1]):move(idx2pix(12, 2)):addTo(mapLayer)
     boy:setScale(0.5)
     boy:playAnimationForever(display.newAnimation({boyFrames[1], boyFrames[2], boyFrames[3], boyFrames[2]}, 0.25))
+    boy.hp = 10
  
     local bear = display.newSprite("bear.png"):addTo(mapLayer)
     bear.pos = {i = 10, j = 2}
     local bearPos = idx2pix(bear.pos)
     bear:move(bearPos.x, bearPos.y + 24)
     bear.hp = 10
+    local souls = getFrames("soul.png", 96)
 
     local lvGauge = cc.Label:createWithSystemFont("Lv: 1", "PixelMplus12", 24):align(cc.p(0, 1), 10, display.height):addTo(self)
     local hpGauge = cc.Label:createWithSystemFont("HP: 10", "PixelMplus12", 24):align(cc.p(1, 1), display.width - 10, display.height):addTo(self)
@@ -141,13 +143,6 @@ function MainScene:onCreate()
         if idx.i < 0 or idx.i >= #FLOOR_TILES or idx.j < 0 or idx.j >= #FLOOR_TILES[1] or FLOOR_TILES[idx.i + 1][idx.j + 1] <= 0 then
             return
         end
-        --[[
-        if idx.i == 8 and idx.j == 3 then
-            draw:show()
-            mes:show()
-            return
-        end
-        ]]
         draw:hide()
         mes:hide()
         local path = calcPath(pix2idx(cc.p(boy:getPosition())), idx)
@@ -157,7 +152,7 @@ function MainScene:onCreate()
                 acts[#acts + 1] = cc.MoveTo:create(0.2, idx2pix(e))
             else
                 acts[#acts + 1] = cc.CallFunc:create(function()
-                    local dmg = math.floor(math.random() * 10)
+                    local dmg = math.floor(math.random() * 1)
                     bear.hp = bear.hp - dmg
                     mes:setString("クマに" .. dmg .. "ダメージ")
                     draw:show()
@@ -171,7 +166,15 @@ function MainScene:onCreate()
                 acts[#acts + 1] = cc.CallFunc:create(function()
                     if bear and bear.hp > 0 then
                         local dmg = math.floor(math.random() * 10)
+                        boy.hp = boy.hp - dmg
+                        hpGauge:setString("HP: " .. boy.hp)
                         mes:setString("@blankblankに" .. dmg .. "ダメージ")
+                        if boy.hp <= 0 then
+                            boy:hide()
+                            local soul = display.newSprite(souls[1]):move(boy:getPosition()):addTo(mapLayer)
+                            soul:playAnimationForever(display.newAnimation({souls[1], souls[2], souls[3]}, 0.25))
+                            soul:setScale(0.5)
+                        end
                     end
                 end)
                 break
