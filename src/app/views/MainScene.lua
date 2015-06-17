@@ -123,12 +123,24 @@ function MainScene:onCreate()
     local boy = display.newSprite(boyFrames[1]):move(idx2pix(12, 2)):addTo(mapLayer)
     boy:setScale(0.5)
     boy:playAnimationForever(display.newAnimation({boyFrames[1], boyFrames[2], boyFrames[3], boyFrames[2]}, 0.25))
-    
+ 
+    local bear = display.newSprite("bear.png"):addTo(mapLayer)
+    bear.pos = {i = 10, j = 2}
+    local bearPos = idx2pix(bear.pos)
+    bear:move(bearPos.x, bearPos.y + 24)
+    bear.hp = 10
+
+    local lvGauge = cc.Label:createWithSystemFont("Lv: 1", "PixelMplus12", 24):align(cc.p(0, 1), 10, display.height):addTo(self)
+    local hpGauge = cc.Label:createWithSystemFont("HP: 10", "PixelMplus12", 24):align(cc.p(1, 1), display.width - 10, display.height):addTo(self)
     local draw = cc.DrawNode:create():addTo(self):hide()
+    draw:drawSolidRect(cc.p(17, 517), cc.p(343, 603), cc.c4f(1, 1, 1, 1))
     draw:drawSolidRect(cc.p(20, 520), cc.p(340, 600), cc.c4f(0, 0, 0, 1))
     local mes = cc.Label:createWithSystemFont("うわああああああああ", "PixelMplus12", 24):move(display.cx, 560):addTo(self):hide()
     display.newLayer():addTo(self):onTouch(function(e)
         local idx = pix2idx(cc.pSub(e, cc.p(mapLayer:getPosition())))
+        if idx.i < 0 or idx.i >= #FLOOR_TILES or idx.j < 0 or idx.j >= #FLOOR_TILES[1] or FLOOR_TILES[idx.i + 1][idx.j + 1] <= 0 then
+            return
+        end
         --[[
         if idx.i == 8 and idx.j == 3 then
             draw:show()
@@ -139,9 +151,32 @@ function MainScene:onCreate()
         draw:hide()
         mes:hide()
         local path = calcPath(pix2idx(cc.p(boy:getPosition())), idx)
-        local acts = us.map(path, function(_, e)
-            return cc.MoveTo:create(0.2, idx2pix(e))
-        end)
+        local acts = {}
+        for _, e in ipairs(path) do
+            if not bear or e.i ~= bear.pos.i or e.j ~= bear.pos.j then
+                acts[#acts + 1] = cc.MoveTo:create(0.2, idx2pix(e))
+            else
+                acts[#acts + 1] = cc.CallFunc:create(function()
+                    local dmg = math.floor(math.random() * 10)
+                    bear.hp = bear.hp - dmg
+                    mes:setString("クマに" .. dmg .. "ダメージ")
+                    draw:show()
+                    mes:show()
+                    if bear.hp <= 0 then
+                        bear:removeSelf()
+                        bear = nil
+                    end
+                end)
+                acts[#acts + 1] = cc.DelayTime:create(0.5)
+                acts[#acts + 1] = cc.CallFunc:create(function()
+                    if bear and bear.hp > 0 then
+                        local dmg = math.floor(math.random() * 10)
+                        mes:setString("@blankblankに" .. dmg .. "ダメージ")
+                    end
+                end)
+                break
+            end
+        end
         boy:runAction(cc.Sequence:create(acts))
     end)
     self:onUpdate(function(dt)
