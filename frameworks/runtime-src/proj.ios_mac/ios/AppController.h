@@ -23,9 +23,11 @@
  THE SOFTWARE.
  ****************************************************************************/
 
+#import <AdColony/AdColony.h>
+
 @class RootViewController;
 
-@interface AppController : NSObject <UIAccelerometerDelegate, UIAlertViewDelegate, UITextFieldDelegate,UIApplicationDelegate>
+@interface AppController : NSObject <UIAccelerometerDelegate, UIAlertViewDelegate, UITextFieldDelegate,UIApplicationDelegate,AdColonyDelegate>
 {
     UIWindow *window;
     RootViewController    *viewController;

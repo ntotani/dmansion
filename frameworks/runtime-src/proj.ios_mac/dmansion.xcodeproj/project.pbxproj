@@ -68,6 +68,20 @@
 		C05D1C131923449100B808A4 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = C05D1C111923449100B808A4 /* config.json */; };
 		C07828F818B4D72E00BD2287 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C07828F418B4D72E00BD2287 /* main.m */; };
 		C07828FA18B4D72E00BD2287 /* SimulatorApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C07828F718B4D72E00BD2287 /* SimulatorApp.mm */; };
+		C6706C7D1B32A6FC00220625 /* AdColony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C7C1B32A6FC00220625 /* AdColony.framework */; };
+		C6706C7F1B32A72200220625 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C7E1B32A72200220625 /* libz.1.2.5.dylib */; };
+		C6706C811B32A72C00220625 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C801B32A72C00220625 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C6706C831B32A74C00220625 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C821B32A74C00220625 /* CoreMedia.framework */; };
+		C6706C851B32A75800220625 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C841B32A75800220625 /* CoreTelephony.framework */; };
+		C6706C871B32A76400220625 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C861B32A76400220625 /* EventKit.framework */; };
+		C6706C891B32A76A00220625 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C881B32A76A00220625 /* EventKitUI.framework */; };
+		C6706C8B1B32A77D00220625 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C8A1B32A77D00220625 /* MediaPlayer.framework */; };
+		C6706C8D1B32A78300220625 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C8C1B32A78300220625 /* MessageUI.framework */; };
+		C6706C8F1B32A79900220625 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C8E1B32A79900220625 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C6706C911B32A7A200220625 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C901B32A7A200220625 /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C6706C931B32A7B500220625 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C921B32A7B500220625 /* SystemConfiguration.framework */; };
+		C6706C951B32A7BC00220625 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C941B32A7BC00220625 /* WebKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C6706CA01B32AE6600220625 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C9F1B32AE6600220625 /* GameController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D6B061351803AC000077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B061341803AC000077942B /* CoreMotion.framework */; };
 		DA9E7D881AB1ABCC004B27C8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9E7D871AB1ABCC004B27C8 /* Security.framework */; };
 		F293B3CD15EB7BE500256477 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F293B3CC15EB7BE500256477 /* QuartzCore.framework */; };
@@ -230,6 +244,20 @@
 		C07828F418B4D72E00BD2287 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C07828F618B4D72E00BD2287 /* SimulatorApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulatorApp.h; sourceTree = "<group>"; };
 		C07828F718B4D72E00BD2287 /* SimulatorApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SimulatorApp.mm; sourceTree = "<group>"; };
+		C6706C7C1B32A6FC00220625 /* AdColony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AdColony.framework; sourceTree = "<group>"; };
+		C6706C7E1B32A72200220625 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/usr/lib/libz.1.2.5.dylib; sourceTree = DEVELOPER_DIR; };
+		C6706C801B32A72C00220625 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C821B32A74C00220625 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C841B32A75800220625 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C861B32A76400220625 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/EventKit.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C881B32A76A00220625 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/EventKitUI.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C8A1B32A77D00220625 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C8C1B32A78300220625 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C8E1B32A79900220625 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Social.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C901B32A7A200220625 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C921B32A7B500220625 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C941B32A7BC00220625 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		C6706C9F1B32AE6600220625 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		D6B061341803AC000077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DA9E7D871AB1ABCC004B27C8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F293B3C815EB7BE500256477 /* dmansion iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dmansion iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -271,6 +299,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6706CA01B32AE6600220625 /* GameController.framework in Frameworks */,
+				C6706C951B32A7BC00220625 /* WebKit.framework in Frameworks */,
+				C6706C931B32A7B500220625 /* SystemConfiguration.framework in Frameworks */,
+				C6706C911B32A7A200220625 /* StoreKit.framework in Frameworks */,
+				C6706C8F1B32A79900220625 /* Social.framework in Frameworks */,
+				C6706C8D1B32A78300220625 /* MessageUI.framework in Frameworks */,
+				C6706C8B1B32A77D00220625 /* MediaPlayer.framework in Frameworks */,
+				C6706C891B32A76A00220625 /* EventKitUI.framework in Frameworks */,
+				C6706C871B32A76400220625 /* EventKit.framework in Frameworks */,
+				C6706C851B32A75800220625 /* CoreTelephony.framework in Frameworks */,
+				C6706C831B32A74C00220625 /* CoreMedia.framework in Frameworks */,
+				C6706C811B32A72C00220625 /* AdSupport.framework in Frameworks */,
+				C6706C7F1B32A72200220625 /* libz.1.2.5.dylib in Frameworks */,
 				9FF504871A5E88CE00AFDA55 /* libsimulator iOS.a in Frameworks */,
 				5200BECA1A53D9A500AC45E4 /* Security.framework in Frameworks */,
 				15427CD5198F222200DC375D /* libluacocos2d iOS.a in Frameworks */,
@@ -278,6 +319,7 @@
 				3EEEDB61197107C0006A9FF8 /* MediaPlayer.framework in Frameworks */,
 				D6B061351803AC000077942B /* CoreMotion.framework in Frameworks */,
 				1AF4C403178663F200122817 /* libz.dylib in Frameworks */,
+				C6706C7D1B32A6FC00220625 /* AdColony.framework in Frameworks */,
 				50805AAF17EBBEAA004CFAD3 /* UIKit.framework in Frameworks */,
 				5023817A17EBBE8300990C9B /* OpenGLES.framework in Frameworks */,
 				F293B3CD15EB7BE500256477 /* QuartzCore.framework in Frameworks */,
@@ -419,6 +461,20 @@
 		F293B3CB15EB7BE500256477 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6706C9F1B32AE6600220625 /* GameController.framework */,
+				C6706C941B32A7BC00220625 /* WebKit.framework */,
+				C6706C921B32A7B500220625 /* SystemConfiguration.framework */,
+				C6706C901B32A7A200220625 /* StoreKit.framework */,
+				C6706C8E1B32A79900220625 /* Social.framework */,
+				C6706C8C1B32A78300220625 /* MessageUI.framework */,
+				C6706C8A1B32A77D00220625 /* MediaPlayer.framework */,
+				C6706C881B32A76A00220625 /* EventKitUI.framework */,
+				C6706C861B32A76400220625 /* EventKit.framework */,
+				C6706C841B32A75800220625 /* CoreTelephony.framework */,
+				C6706C821B32A74C00220625 /* CoreMedia.framework */,
+				C6706C801B32A72C00220625 /* AdSupport.framework */,
+				C6706C7E1B32A72200220625 /* libz.1.2.5.dylib */,
+				C6706C7C1B32A6FC00220625 /* AdColony.framework */,
 				DA9E7D871AB1ABCC004B27C8 /* Security.framework */,
 				5200BEC91A53D9A500AC45E4 /* Security.framework */,
 				3EEEDB60197107C0006A9FF8 /* MediaPlayer.framework */,
@@ -870,6 +926,10 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
@@ -888,6 +948,8 @@
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
+					"-ObjC",
+					"-fobjc-arc",
 				);
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=x86_64]" = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
@@ -910,6 +972,10 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -927,6 +993,8 @@
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
+					"-ObjC",
+					"-fobjc-arc",
 				);
 				"OTHER_LDFLAGS[sdk=iphonesimulator*][arch=x86_64]" = (
 					"$(_COCOS_LIB_IOS_BEGIN)",

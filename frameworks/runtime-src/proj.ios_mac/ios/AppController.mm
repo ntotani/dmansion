@@ -41,6 +41,10 @@ static AppDelegate s_sharedApplication;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [AdColony configureWithAppID: @"app1e806578c6544f6291"
+                         zoneIDs: @[ @"vzde4893606ca34570ac" ]
+                        delegate: self
+                         logging: YES];
 
     cocos2d::Application *app = cocos2d::Application::getInstance();
     app->initGLContextAttrs();
@@ -143,6 +147,11 @@ static AppDelegate s_sharedApplication;
     [super dealloc];
 }
 
++ (void)reward:(NSDictionary*)args {
+    [AdColony playVideoAdForZone:@"vzde4893606ca34570ac"
+                    withDelegate:nil
+                withV4VCPrePopup:NO
+                andV4VCPostPopup:NO];
+}
 
 @end
-

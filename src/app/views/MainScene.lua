@@ -125,6 +125,10 @@ function MainScene:onCreate()
     boy:playAnimationForever(display.newAnimation({boyFrames[1], boyFrames[2], boyFrames[3], boyFrames[2]}, 0.25))
     boy.hp = 10
     boy.friends = {}
+    
+    local manFrames = getFrames("man.png", 32)
+    local man = display.newSprite(manFrames[1]):move(idx2pix(1, 1)):addTo(mapLayer)
+    man:playAnimationForever(display.newAnimation({manFrames[1], manFrames[2], manFrames[3], manFrames[2]}, 0.25))
  
     local bear = display.newSprite("bear.png"):addTo(mapLayer)
     bear.pos = {i = 10, j = 2}
@@ -151,7 +155,14 @@ function MainScene:onCreate()
         local acts = {}
         local friendActs = us.map(boy.friends, function() return {} end)
         for _, e in ipairs(path) do
-            if not bear or e.i ~= bear.pos.i or e.j ~= bear.pos.j then
+            if e.i == 1 and e.j == 1 then
+                mes:setString("動画を見たらコインやるぞい")
+                draw:show()
+                mes:show()
+                man:runAction(cc.Sequence:create(cc.DelayTime:create(0.5), cc.CallFunc:create(function()
+                    require("cocos.cocos2d.luaoc").callStaticMethod("AppController", "reward", {})
+                end)))
+            elseif not bear or e.i ~= bear.pos.i or e.j ~= bear.pos.j then
                 acts[#acts + 1] = cc.MoveTo:create(0.2, idx2pix(e))
                 for i, friend in ipairs(boy.friends) do
                     friendActs[i][#friendActs[i] + 1] = cc.MoveTo:create(0.2, idx2pix(friend.target))
