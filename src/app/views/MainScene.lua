@@ -23,6 +23,7 @@ us.each({0, 1}, function(_, i)
         end)
     end)
 end)
+local START_POS = {i = 12, j = 2}
 
 local function getFrames(name, size)
     local texture = display.loadImage(name)
@@ -120,7 +121,7 @@ function MainScene:onCreate()
     local mapLayer = map("tile.png", 16, tileData):addTo(self)
     display.newSprite(getFrames("move_obj4.png", 16)[7]):move(idx2pix(2, 2)):addTo(mapLayer)
     local boyFrames = getFrames("hero.png", 96)
-    local boy = display.newSprite(boyFrames[1]):move(idx2pix(12, 2)):addTo(mapLayer)
+    local boy = display.newSprite(boyFrames[1]):move(idx2pix(START_POS)):addTo(mapLayer)
     boy:setScale(0.5)
     boy:playAnimationForever(display.newAnimation({boyFrames[1], boyFrames[2], boyFrames[3], boyFrames[2]}, 0.25))
     boy.hp = 10
@@ -170,6 +171,12 @@ function MainScene:onCreate()
                             local soul = display.newSprite(souls[1]):move(boy:getPosition()):addTo(mapLayer)
                             soul:playAnimationForever(display.newAnimation({souls[1], souls[2], souls[3]}, 0.25))
                             soul:setScale(0.5)
+                            boy:runAction(cc.Sequence:create(cc.DelayTime:create(1), cc.CallFunc:create(function()
+                                boy:show()
+                                boy:move(idx2pix(START_POS))
+                                boy.hp = 10
+                                hpGauge:setString("HP: " .. boy.hp)
+                            end)))
                         end
                     else
                         bear.hp = 10
