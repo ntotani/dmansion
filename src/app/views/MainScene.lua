@@ -152,19 +152,15 @@ function MainScene:onCreate()
                 acts[#acts + 1] = cc.MoveTo:create(0.2, idx2pix(e))
             else
                 acts[#acts + 1] = cc.CallFunc:create(function()
-                    local dmg = math.floor(math.random() * 1)
+                    local dmg = math.floor(math.random() * 10)
                     bear.hp = bear.hp - dmg
                     mes:setString("クマに" .. dmg .. "ダメージ")
                     draw:show()
                     mes:show()
-                    if bear.hp <= 0 then
-                        bear:removeSelf()
-                        bear = nil
-                    end
                 end)
                 acts[#acts + 1] = cc.DelayTime:create(0.5)
                 acts[#acts + 1] = cc.CallFunc:create(function()
-                    if bear and bear.hp > 0 then
+                    if bear.hp > 0 then
                         local dmg = math.floor(math.random() * 10)
                         boy.hp = boy.hp - dmg
                         hpGauge:setString("HP: " .. boy.hp)
@@ -175,6 +171,13 @@ function MainScene:onCreate()
                             soul:playAnimationForever(display.newAnimation({souls[1], souls[2], souls[3]}, 0.25))
                             soul:setScale(0.5)
                         end
+                    else
+                        bear.hp = 10
+                        local row = math.random() < 0.5 and 0 or 1
+                        local col = math.random() < 0.5 and 0 or 1
+                        bear.pos.i = row * 10 + math.floor(math.random() * 5)
+                        bear.pos.j = col * 10 + math.floor(math.random() * 5)
+                        bear:setPosition(idx2pix(bear.pos))
                     end
                 end)
                 break
