@@ -119,19 +119,20 @@ function MainScene:onCreate()
         end
     end
     local mapLayer = map("tile.png", 16, tileData):addTo(self)
-    display.newSprite(getFrames("move_obj4.png", 16)[7]):move(idx2pix(2, 2)):addTo(mapLayer)
     local boyFrames = getFrames("hero.png", 96)
     local boy = display.newSprite(boyFrames[1]):move(idx2pix(START_POS)):addTo(mapLayer)
     boy:setScale(0.5)
     boy:playAnimationForever(display.newAnimation({boyFrames[1], boyFrames[2], boyFrames[3], boyFrames[2]}, 0.25))
     boy.hp = 10
+    boy.friends = {}
  
     local bear = display.newSprite("bear.png"):addTo(mapLayer)
     bear.pos = {i = 10, j = 2}
     local bearPos = idx2pix(bear.pos)
     bear:move(bearPos.x, bearPos.y + 24)
     bear.hp = 10
-    local souls = getFrames("soul.png", 96)
+    local soulFrames = getFrames("soul.png", 96)
+    local souls = {}
 
     local lvGauge = cc.Label:createWithSystemFont("Lv: 1", "PixelMplus12", 24):align(cc.p(0, 1), 10, display.height):addTo(self)
     local hpGauge = cc.Label:createWithSystemFont("HP: 10", "PixelMplus12", 24):align(cc.p(1, 1), display.width - 10, display.height):addTo(self)
@@ -148,9 +149,28 @@ function MainScene:onCreate()
         mes:hide()
         local path = calcPath(pix2idx(cc.p(boy:getPosition())), idx)
         local acts = {}
+        local friendActs = us.map(boy.friends, function() return {} end)
         for _, e in ipairs(path) do
             if not bear or e.i ~= bear.pos.i or e.j ~= bear.pos.j then
                 acts[#acts + 1] = cc.MoveTo:create(0.2, idx2pix(e))
+                for i, friend in ipairs(boy.friends) do
+                    friendActs[i][#friendActs[i] + 1] = cc.MoveTo:create(0.2, idx2pix(friend.target))
+                    friend.target = e
+                end
+                local catchSoul = false
+                for i, soul in ipairs(souls) do
+                    if us.isEqual(pix2idx(soul:getPosition()), e) then
+                        mes:setString("@SakeRiceの断末魔が聞こえる")
+                        draw:show()
+                        mes:show()
+                        soul.target = e
+                        boy.friends[#boy.friends + 1] = soul
+                        table.remove(souls, i)
+                        catchSoul = true
+                        break
+                    end
+                end
+                if catchSoul then break end
             else
                 acts[#acts + 1] = cc.CallFunc:create(function()
                     local dmg = math.floor(math.random() * 10)
@@ -167,9 +187,11 @@ function MainScene:onCreate()
                         hpGauge:setString("HP: " .. boy.hp)
                         mes:setString("@blankblankに" .. dmg .. "ダメージ")
                         if boy.hp <= 0 then
+                            for _, e in ipairs(boy.friends) do e:removeSelf() end
+                            boy.friends = {}
                             boy:hide()
-                            local soul = display.newSprite(souls[1]):move(boy:getPosition()):addTo(mapLayer)
-                            soul:playAnimationForever(display.newAnimation({souls[1], souls[2], souls[3]}, 0.25))
+                            local soul = display.newSprite(soulFrames[1]):move(boy:getPosition()):addTo(mapLayer)
+                            soul:playAnimationForever(display.newAnimation(soulFrames, 0.25))
                             soul:setScale(0.5)
                             boy:runAction(cc.Sequence:create(cc.DelayTime:create(1), cc.CallFunc:create(function()
                                 boy:show()
@@ -177,6 +199,7 @@ function MainScene:onCreate()
                                 boy.hp = 10
                                 hpGauge:setString("HP: " .. boy.hp)
                             end)))
+                            souls[#souls + 1] = soul
                         end
                     else
                         bear.hp = 10
@@ -191,6 +214,9 @@ function MainScene:onCreate()
             end
         end
         boy:runAction(cc.Sequence:create(acts))
+        for i, fa in ipairs(friendActs) do
+            boy.friends[i]:runAction(cc.Sequence:create(fa))
+        end
     end)
     self:onUpdate(function(dt)
         mapLayer:move(display.cx - boy:getPositionX(), display.cy - boy:getPositionY())
