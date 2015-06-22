@@ -50,13 +50,13 @@ Application::~Application()
 
 int Application::run()
 {
-    /*
-    initGLContextAttrs();
+    //initGLContextAttrs();
     if(!applicationDidFinishLaunching())
     {
         return 1;
     }
-    
+
+    /*
     long lastTime = 0L;
     long curTime = 0L;
     
