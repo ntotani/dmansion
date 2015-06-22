@@ -23,11 +23,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
-#ifndef __CC_APPLICATION_MAC_H__
-#define __CC_APPLICATION_MAC_H__
+#ifndef __CC_APPLICATION_VIRTUAL_H__
+#define __CC_APPLICATION_VIRTUAL_H__
 
 #include "platform/CCPlatformConfig.h"
-#if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 
 #include "platform/CCCommon.h"
 #include "platform/CCApplicationProtocol.h"
@@ -117,13 +116,11 @@ public:
 protected:
     static Application * sm_pSharedApplication;
     
-    long _animationInterval;  //micro second
     std::string _resourceRootPath;
     std::string _startupScriptFilename;
 };
 
 NS_CC_END
 
-#endif // CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 
-#endif	// end of __CC_APPLICATION_MAC_H__;
+#endif	// end of __CC_APPLICATION_VIRTUAL_H__;
