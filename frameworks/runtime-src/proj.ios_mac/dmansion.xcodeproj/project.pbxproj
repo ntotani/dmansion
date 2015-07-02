@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15427CD5198F222200DC375D /* libluacocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15427CD2198F220600DC375D /* libluacocos2d iOS.a */; };
-		15427CEC198F24A600DC375D /* libluacocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15427CC2198F220600DC375D /* libluacocos2d Mac.a */; };
 		15A8A4491834C64F00142BE0 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 5023810C17EBBCAC00990C9B /* Icon-114.png */; };
 		15A8A4881834C90F00142BE0 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A8A4871834C90E00142BE0 /* libcurl.dylib */; };
 		1AF4C403178663F200122817 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AF4C402178663F200122817 /* libz.dylib */; };
@@ -82,6 +80,8 @@
 		C6706CA01B32AE6600220625 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6706C9F1B32AE6600220625 /* GameController.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C6FE98C61B45366D00A30191 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FE98C51B45366D00A30191 /* libcocos2d iOS.a */; };
 		C6FE98C81B453A4700A30191 /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FE98C71B453A4700A30191 /* libcocos2d Mac.a */; };
+		C6FE98CA1B453C6000A30191 /* libluacocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FE98C91B453C6000A30191 /* libluacocos2d iOS.a */; };
+		C6FE98CC1B453CFC00A30191 /* libluacocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FE98CB1B453CFC00A30191 /* libluacocos2d Mac.a */; };
 		D6B061351803AC000077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B061341803AC000077942B /* CoreMotion.framework */; };
 		DA9E7D881AB1ABCC004B27C8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9E7D871AB1ABCC004B27C8 /* Security.framework */; };
 		F293B3CD15EB7BE500256477 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F293B3CC15EB7BE500256477 /* QuartzCore.framework */; };
@@ -94,34 +94,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		152A349E199CE72E004B68DC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 15EFA59E198B2DAA000C57D3;
-			remoteInfo = "libluacocos2d iOS";
-		};
-		152A34B8199CE758004B68DC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 15C1C255198748D200A46ACC;
-			remoteInfo = "libluacocos2d Mac";
-		};
-		15427CC1198F220600DC375D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 15C1C2CC198748D200A46ACC;
-			remoteInfo = "libluacocos2d Mac";
-		};
-		15427CD1198F220600DC375D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 15EFA616198B2DAA000C57D3;
-			remoteInfo = "libluacocos2d iOS";
-		};
 		9FEE0E431A5FC95000FEA1B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */;
@@ -208,7 +180,6 @@
 		9FFE009C1ACCF59E00D6E35A /* lua_debugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua_debugger.h; sourceTree = "<group>"; };
 		9FFE009D1ACCF59E00D6E35A /* RuntimeLuaImpl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RuntimeLuaImpl.cpp; sourceTree = "<group>"; };
 		9FFE009E1ACCF59E00D6E35A /* RuntimeLuaImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuntimeLuaImpl.h; sourceTree = "<group>"; };
-		C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_lua_bindings.xcodeproj; path = "../../cocos2d-x/cocos/scripting/lua-bindings/proj.ios_mac/cocos2d_lua_bindings.xcodeproj"; sourceTree = "<group>"; };
 		C03781B718BF655400FE4F13 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../../res; sourceTree = "<group>"; };
 		C03781B818BF655400FE4F13 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../src; sourceTree = "<group>"; };
 		C05D1C111923449100B808A4 /* config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = config.json; path = ../../../config.json; sourceTree = "<group>"; };
@@ -231,6 +202,8 @@
 		C6706C9F1B32AE6600220625 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		C6FE98C51B45366D00A30191 /* libcocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d iOS.a"; path = "../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/ios/libcocos2d iOS.a"; sourceTree = "<group>"; };
 		C6FE98C71B453A4700A30191 /* libcocos2d Mac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d Mac.a"; path = "../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/mac/libcocos2d Mac.a"; sourceTree = "<group>"; };
+		C6FE98C91B453C6000A30191 /* libluacocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluacocos2d iOS.a"; path = "../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/ios/libluacocos2d iOS.a"; sourceTree = "<group>"; };
+		C6FE98CB1B453CFC00A30191 /* libluacocos2d Mac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluacocos2d Mac.a"; path = "../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/mac/libluacocos2d Mac.a"; sourceTree = "<group>"; };
 		D6B061341803AC000077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DA9E7D871AB1ABCC004B27C8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F293B3C815EB7BE500256477 /* dmansion iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dmansion iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,10 +224,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FE98CC1B453CFC00A30191 /* libluacocos2d Mac.a in Frameworks */,
 				C6FE98C81B453A4700A30191 /* libcocos2d Mac.a in Frameworks */,
 				DA9E7D881AB1ABCC004B27C8 /* Security.framework in Frameworks */,
 				9FF504861A5E881200AFDA55 /* libsimulator Mac.a in Frameworks */,
-				15427CEC198F24A600DC375D /* libluacocos2d Mac.a in Frameworks */,
 				15A8A4881834C90F00142BE0 /* libcurl.dylib in Frameworks */,
 				50D7C97017EBBEEC005D0B91 /* IOKit.framework in Frameworks */,
 				50D7C96E17EBBEE6005D0B91 /* AppKit.framework in Frameworks */,
@@ -272,6 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FE98CA1B453C6000A30191 /* libluacocos2d iOS.a in Frameworks */,
 				C6FE98C61B45366D00A30191 /* libcocos2d iOS.a in Frameworks */,
 				C6706CA01B32AE6600220625 /* GameController.framework in Frameworks */,
 				C6706C951B32A7BC00220625 /* WebKit.framework in Frameworks */,
@@ -288,7 +262,6 @@
 				C6706C7F1B32A72200220625 /* libz.1.2.5.dylib in Frameworks */,
 				9FF504871A5E88CE00AFDA55 /* libsimulator iOS.a in Frameworks */,
 				5200BECA1A53D9A500AC45E4 /* Security.framework in Frameworks */,
-				15427CD5198F222200DC375D /* libluacocos2d iOS.a in Frameworks */,
 				3EEEDB61197107C0006A9FF8 /* MediaPlayer.framework in Frameworks */,
 				D6B061351803AC000077942B /* CoreMotion.framework in Frameworks */,
 				1AF4C403178663F200122817 /* libz.dylib in Frameworks */,
@@ -389,20 +362,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C03781AF18BF654500FE4F13 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				15427CC2198F220600DC375D /* libluacocos2d Mac.a */,
-				15427CD2198F220600DC375D /* libluacocos2d iOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F293B3BD15EB7BE500256477 = {
 			isa = PBXGroup;
 			children = (
 				9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */,
-				C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */,
 				5023810617EBBCAC00990C9B /* ios */,
 				5023817117EBBE3400990C9B /* mac */,
 				F293BB7C15EB830F00256477 /* Classes */,
@@ -424,6 +387,8 @@
 		F293B3CB15EB7BE500256477 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6FE98CB1B453CFC00A30191 /* libluacocos2d Mac.a */,
+				C6FE98C91B453C6000A30191 /* libluacocos2d iOS.a */,
 				C6FE98C71B453A4700A30191 /* libcocos2d Mac.a */,
 				C6FE98C51B45366D00A30191 /* libcocos2d iOS.a */,
 				C6706C9F1B32AE6600220625 /* GameController.framework */,
@@ -503,7 +468,6 @@
 			dependencies = (
 				9FEE0E441A5FC95000FEA1B0 /* PBXTargetDependency */,
 				9FF505C11A5F0F0900AFDA55 /* PBXTargetDependency */,
-				152A34B9199CE758004B68DC /* PBXTargetDependency */,
 			);
 			name = "dmansion Mac";
 			productName = dmansion;
@@ -523,7 +487,6 @@
 			);
 			dependencies = (
 				9FF504891A5E8B4C00AFDA55 /* PBXTargetDependency */,
-				152A349F199CE72E004B68DC /* PBXTargetDependency */,
 			);
 			name = "dmansion iOS";
 			productName = dmansion;
@@ -557,10 +520,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C03781AF18BF654500FE4F13 /* Products */;
-					ProjectRef = C03781AE18BF654500FE4F13 /* cocos2d_lua_bindings.xcodeproj */;
-				},
-				{
 					ProductGroup = 9FF504791A5E86D600AFDA55 /* Products */;
 					ProjectRef = 9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */;
 				},
@@ -574,20 +533,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		15427CC2198F220600DC375D /* libluacocos2d Mac.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libluacocos2d Mac.a";
-			remoteRef = 15427CC1198F220600DC375D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		15427CD2198F220600DC375D /* libluacocos2d iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libluacocos2d iOS.a";
-			remoteRef = 15427CD1198F220600DC375D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		9FF5047E1A5E86D600AFDA55 /* libsimulator Mac.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -696,16 +641,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		152A349F199CE72E004B68DC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "libluacocos2d iOS";
-			targetProxy = 152A349E199CE72E004B68DC /* PBXContainerItemProxy */;
-		};
-		152A34B9199CE758004B68DC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "libluacocos2d Mac";
-			targetProxy = 152A34B8199CE758004B68DC /* PBXContainerItemProxy */;
-		};
 		9FEE0E441A5FC95000FEA1B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = libsimulator;
@@ -757,7 +692,10 @@
 					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/mac";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/mac",
+					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/mac",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"-image_base",
@@ -792,7 +730,10 @@
 					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/mac";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/mac",
+					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/mac",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"-image_base",
@@ -879,7 +820,10 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/ios";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/ios",
+					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/ios",
+				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -924,7 +868,10 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/ios";
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/ios",
+					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/ios",
+				);
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
