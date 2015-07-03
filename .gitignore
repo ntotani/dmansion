@@ -127,3 +127,5 @@ cmake_install.cmake
 
 # crashlytics
 com_crashlytics_export_strings.xml
+
+/frameworks/cocos2d-x/tools/gen-prebuilt/prebuilt
