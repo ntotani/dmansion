@@ -49,8 +49,6 @@
 		9FC760451A677A4A00D1E6E7 /* SimpleConfigParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9FC760411A67791200D1E6E7 /* SimpleConfigParser.cpp */; };
 		9FF504841A5E87B100AFDA55 /* ConsoleWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FF504811A5E87B100AFDA55 /* ConsoleWindow.xib */; };
 		9FF504851A5E87B100AFDA55 /* ConsoleWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FF504831A5E87B100AFDA55 /* ConsoleWindowController.m */; };
-		9FF504861A5E881200AFDA55 /* libsimulator Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF5047E1A5E86D600AFDA55 /* libsimulator Mac.a */; };
-		9FF504871A5E88CE00AFDA55 /* libsimulator iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF504801A5E86D600AFDA55 /* libsimulator iOS.a */; };
 		9FFC07361A4A764100AED399 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FFC07341A4A764100AED399 /* MainMenu.xib */; };
 		9FFE009F1ACCF59E00D6E35A /* lua_debugger.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE009B1ACCF59E00D6E35A /* lua_debugger.c */; };
 		9FFE00A01ACCF59E00D6E35A /* lua_debugger.c in Sources */ = {isa = PBXBuildFile; fileRef = 9FFE009B1ACCF59E00D6E35A /* lua_debugger.c */; };
@@ -82,6 +80,8 @@
 		C6FE98C81B453A4700A30191 /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FE98C71B453A4700A30191 /* libcocos2d Mac.a */; };
 		C6FE98CA1B453C6000A30191 /* libluacocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FE98C91B453C6000A30191 /* libluacocos2d iOS.a */; };
 		C6FE98CC1B453CFC00A30191 /* libluacocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FE98CB1B453CFC00A30191 /* libluacocos2d Mac.a */; };
+		C6FE99001B46D70A00A30191 /* libsimulator iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FE98FF1B46D70A00A30191 /* libsimulator iOS.a */; };
+		C6FE99021B46D79500A30191 /* libsimulator Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C6FE99011B46D79500A30191 /* libsimulator Mac.a */; };
 		D6B061351803AC000077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B061341803AC000077942B /* CoreMotion.framework */; };
 		DA9E7D881AB1ABCC004B27C8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9E7D871AB1ABCC004B27C8 /* Security.framework */; };
 		F293B3CD15EB7BE500256477 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F293B3CC15EB7BE500256477 /* QuartzCore.framework */; };
@@ -92,37 +92,6 @@
 		F293B3DB15EB7BE500256477 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F293B3DA15EB7BE500256477 /* CoreGraphics.framework */; };
 		F293BB9C15EB831F00256477 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F293BB7E15EB831F00256477 /* AppDelegate.cpp */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9FEE0E431A5FC95000FEA1B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F7214341A5C271F00DAED06;
-			remoteInfo = libsimulator;
-		};
-		9FF5047D1A5E86D600AFDA55 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9F7214351A5C271F00DAED06;
-			remoteInfo = libsimulator;
-		};
-		9FF5047F1A5E86D600AFDA55 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9F7214851A5C28BA00DAED06;
-			remoteInfo = libsimulator_iOS;
-		};
-		9FF504881A5E8B4C00AFDA55 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F7214841A5C28BA00DAED06;
-			remoteInfo = libsimulator_iOS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		15427CE2198F237300DC375D /* lua_module_register.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lua_module_register.h; path = ../Classes/lua_module_register.h; sourceTree = "<group>"; };
@@ -170,7 +139,6 @@
 		9FC760401A67791200D1E6E7 /* lang */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lang; sourceTree = "<group>"; };
 		9FC760411A67791200D1E6E7 /* SimpleConfigParser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleConfigParser.cpp; sourceTree = "<group>"; };
 		9FC760421A67791200D1E6E7 /* SimpleConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleConfigParser.h; sourceTree = "<group>"; };
-		9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libsimulator.xcodeproj; path = "../../cocos2d-x/tools/simulator/libsimulator/proj.ios_mac/libsimulator.xcodeproj"; sourceTree = "<group>"; };
 		9FF504811A5E87B100AFDA55 /* ConsoleWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsoleWindow.xib; sourceTree = "<group>"; };
 		9FF504821A5E87B100AFDA55 /* ConsoleWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsoleWindowController.h; sourceTree = "<group>"; };
 		9FF504831A5E87B100AFDA55 /* ConsoleWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsoleWindowController.m; sourceTree = "<group>"; };
@@ -204,6 +172,8 @@
 		C6FE98C71B453A4700A30191 /* libcocos2d Mac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d Mac.a"; path = "../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/mac/libcocos2d Mac.a"; sourceTree = "<group>"; };
 		C6FE98C91B453C6000A30191 /* libluacocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluacocos2d iOS.a"; path = "../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/ios/libluacocos2d iOS.a"; sourceTree = "<group>"; };
 		C6FE98CB1B453CFC00A30191 /* libluacocos2d Mac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libluacocos2d Mac.a"; path = "../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/mac/libluacocos2d Mac.a"; sourceTree = "<group>"; };
+		C6FE98FF1B46D70A00A30191 /* libsimulator iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsimulator iOS.a"; path = "../../cocos2d-x/tools/gen-prebuilt/prebuilt/ios/Debug-iphoneos/libsimulator iOS.a"; sourceTree = "<group>"; };
+		C6FE99011B46D79500A30191 /* libsimulator Mac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsimulator Mac.a"; path = "../../cocos2d-x/tools/gen-prebuilt/prebuilt/mac/libsimulator Mac.a"; sourceTree = "<group>"; };
 		D6B061341803AC000077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DA9E7D871AB1ABCC004B27C8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		F293B3C815EB7BE500256477 /* dmansion iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dmansion iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,10 +194,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FE99021B46D79500A30191 /* libsimulator Mac.a in Frameworks */,
 				C6FE98CC1B453CFC00A30191 /* libluacocos2d Mac.a in Frameworks */,
 				C6FE98C81B453A4700A30191 /* libcocos2d Mac.a in Frameworks */,
 				DA9E7D881AB1ABCC004B27C8 /* Security.framework in Frameworks */,
-				9FF504861A5E881200AFDA55 /* libsimulator Mac.a in Frameworks */,
 				15A8A4881834C90F00142BE0 /* libcurl.dylib in Frameworks */,
 				50D7C97017EBBEEC005D0B91 /* IOKit.framework in Frameworks */,
 				50D7C96E17EBBEE6005D0B91 /* AppKit.framework in Frameworks */,
@@ -245,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FE99001B46D70A00A30191 /* libsimulator iOS.a in Frameworks */,
 				C6FE98CA1B453C6000A30191 /* libluacocos2d iOS.a in Frameworks */,
 				C6FE98C61B45366D00A30191 /* libcocos2d iOS.a in Frameworks */,
 				C6706CA01B32AE6600220625 /* GameController.framework in Frameworks */,
@@ -260,7 +231,6 @@
 				C6706C831B32A74C00220625 /* CoreMedia.framework in Frameworks */,
 				C6706C811B32A72C00220625 /* AdSupport.framework in Frameworks */,
 				C6706C7F1B32A72200220625 /* libz.1.2.5.dylib in Frameworks */,
-				9FF504871A5E88CE00AFDA55 /* libsimulator iOS.a in Frameworks */,
 				5200BECA1A53D9A500AC45E4 /* Security.framework in Frameworks */,
 				3EEEDB61197107C0006A9FF8 /* MediaPlayer.framework in Frameworks */,
 				D6B061351803AC000077942B /* CoreMotion.framework in Frameworks */,
@@ -353,19 +323,9 @@
 			path = "../Classes/ide-support";
 			sourceTree = "<group>";
 		};
-		9FF504791A5E86D600AFDA55 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				9FF5047E1A5E86D600AFDA55 /* libsimulator Mac.a */,
-				9FF504801A5E86D600AFDA55 /* libsimulator iOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		F293B3BD15EB7BE500256477 = {
 			isa = PBXGroup;
 			children = (
-				9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */,
 				5023810617EBBCAC00990C9B /* ios */,
 				5023817117EBBE3400990C9B /* mac */,
 				F293BB7C15EB830F00256477 /* Classes */,
@@ -387,6 +347,8 @@
 		F293B3CB15EB7BE500256477 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6FE99011B46D79500A30191 /* libsimulator Mac.a */,
+				C6FE98FF1B46D70A00A30191 /* libsimulator iOS.a */,
 				C6FE98CB1B453CFC00A30191 /* libluacocos2d Mac.a */,
 				C6FE98C91B453C6000A30191 /* libluacocos2d iOS.a */,
 				C6FE98C71B453A4700A30191 /* libcocos2d Mac.a */,
@@ -466,7 +428,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9FEE0E441A5FC95000FEA1B0 /* PBXTargetDependency */,
 				9FF505C11A5F0F0900AFDA55 /* PBXTargetDependency */,
 			);
 			name = "dmansion Mac";
@@ -486,7 +447,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				9FF504891A5E8B4C00AFDA55 /* PBXTargetDependency */,
 			);
 			name = "dmansion iOS";
 			productName = dmansion;
@@ -518,12 +478,6 @@
 			mainGroup = F293B3BD15EB7BE500256477;
 			productRefGroup = F293B3C915EB7BE500256477 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 9FF504791A5E86D600AFDA55 /* Products */;
-					ProjectRef = 9FF504781A5E86D600AFDA55 /* libsimulator.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				F293B3C715EB7BE500256477 /* dmansion iOS */,
@@ -531,23 +485,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		9FF5047E1A5E86D600AFDA55 /* libsimulator Mac.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libsimulator Mac.a";
-			remoteRef = 9FF5047D1A5E86D600AFDA55 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		9FF504801A5E86D600AFDA55 /* libsimulator iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libsimulator iOS.a";
-			remoteRef = 9FF5047F1A5E86D600AFDA55 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5023814617EBBCE400990C9B /* Resources */ = {
@@ -641,16 +578,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9FEE0E441A5FC95000FEA1B0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libsimulator;
-			targetProxy = 9FEE0E431A5FC95000FEA1B0 /* PBXContainerItemProxy */;
-		};
-		9FF504891A5E8B4C00AFDA55 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libsimulator_iOS;
-			targetProxy = 9FF504881A5E8B4C00AFDA55 /* PBXContainerItemProxy */;
-		};
 		9FF505C11A5F0F0900AFDA55 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = libsimulator;
