@@ -692,10 +692,7 @@
 					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/mac",
-					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/mac",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/prebuilt/mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"-image_base",
@@ -730,10 +727,7 @@
 					"$(SRCROOT)/../../cocos2d-x/tools/simulator/libsimulator/lib",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/mac",
-					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/mac",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/prebuilt/mac";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_LDFLAGS = (
 					"-image_base",
@@ -820,10 +814,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/ios",
-					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/ios",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/prebuilt/ios/$(PLATFORM_NAME)";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -868,10 +859,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/prebuilt/ios",
-					"$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/cocos2d-x/cocos/lua-bindings/prebuilt/ios",
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../cocos2d-x/tools/gen-prebuilt/prebuilt/ios/$(PLATFORM_NAME)";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
