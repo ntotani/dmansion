@@ -293,8 +293,8 @@ class Generator(object):
             ios_out_dir = os.path.join(self.tool_dir, output_dir, "ios")
             mac_out_dir = os.path.join(self.tool_dir, output_dir, "mac")
 
-            ios_sim_libs_dir = os.path.join(ios_out_dir, "simulator")
-            ios_dev_libs_dir = os.path.join(ios_out_dir, "device")
+            ios_sim_libs_dir = os.path.join(ios_out_dir, "iphonesimulator")
+            ios_dev_libs_dir = os.path.join(ios_out_dir, "iphoneos")
             for target in self.xcode_proj_info[key][Generator.KEY_TARGETS]:
                 build_cmd = Generator.XCODE_CMD_FMT % (proj_path, "%s iOS" % target, "-sdk iphonesimulator", ios_sim_libs_dir)
                 run_shell(build_cmd, self.tool_dir)
@@ -305,6 +305,7 @@ class Generator(object):
                 build_cmd = Generator.XCODE_CMD_FMT % (proj_path, "%s Mac" % target, "", mac_out_dir)
                 run_shell(build_cmd, self.tool_dir)
 
+            """
             # generate fat libs for iOS
             for lib in os.listdir(ios_sim_libs_dir):
                 sim_lib = os.path.join(ios_sim_libs_dir, lib)
@@ -317,10 +318,13 @@ class Generator(object):
             # remove the simulator & device libs in iOS
             shutil.rmtree(ios_sim_libs_dir)
             shutil.rmtree(ios_dev_libs_dir)
+            """
 
             if not self.disable_strip:
                 # strip the libs
-                ios_strip_cmd = "xcrun -sdk iphoneos strip -S %s/*.a" % ios_out_dir
+                ios_strip_cmd = "xcrun -sdk iphonesimulator strip -S %s/*.a" % ios_sim_libs_dir
+                run_shell(ios_strip_cmd)
+                ios_strip_cmd = "xcrun -sdk iphoneos strip -S %s/*.a" % ios_dev_libs_dir
                 run_shell(ios_strip_cmd)
                 mac_strip_cmd = "xcrun strip -S %s/*.a" % mac_out_dir
                 run_shell(mac_strip_cmd)
