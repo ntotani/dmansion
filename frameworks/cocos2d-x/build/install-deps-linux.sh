@@ -8,12 +8,18 @@ if [ ! $(command -v apt-get) ]; then
   exit 0
 fi
 
+echo hoge
+
 #install g++-4.9
 sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
 
+echo hoge
+
 #try to remove glfw2
 sudo apt-get remove libglfw2
+
+echo hoge
 
 DEPENDS='libx11-dev'
 DEPENDS+=' libxmu-dev'
@@ -37,6 +43,7 @@ for i in $DEPENDS; do
     fi
 done
 
+echo hoge
 
 if [ -f /usr/bin/g++ ];then
 sudo rm /usr/bin/g++
@@ -44,12 +51,16 @@ echo "remove old g++"
 fi
 sudo ln -s /usr/bin/g++-4.9 /usr/bin/g++
 
+echo hoge
+
 if [ -n "$MISSING" ]; then
     TXTCOLOR_DEFAULT="\033[0;m"
     TXTCOLOR_GREEN="\033[0;32m"
     echo -e $TXTCOLOR_GREEN"Missing packages: $MISSING.\nYou may be asked for your password for package installation."$TXTCOLOR_DEFAULT
     sudo apt-get --force-yes --yes install $MISSING
 fi
+
+echo hoge
 
 # install glfw
 ../tools/travis-scripts/install_glfw.sh
