@@ -20,6 +20,7 @@ local function main()
     setDeltaTime(5)
     cc.Director:getInstance():mainLoop() -- animation
     assert(node:getPositionX() == 10, "node should move right")
+    print("test success")
 end
 
 local status, msg = xpcall(main, __G__TRACKBACK__)
