@@ -1,4 +1,6 @@
 dependencies:
+    cache_directories:
+        - "linux-build"
     override:
         - python frameworks/cocos2d-x/download-deps.py -r yes
         - echo "\n" | frameworks/cocos2d-x/build/install-deps-linux.sh
