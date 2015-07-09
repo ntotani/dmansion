@@ -1,5 +1,6 @@
 dependencies:
     override:
+        - python frameworks/cocos2d-x/download-deps.py -r
         - echo "\n" | frameworks/cocos2d-x/build/install-deps-linux.sh
 
 test:
