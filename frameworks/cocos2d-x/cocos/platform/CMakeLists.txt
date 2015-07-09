@@ -1,3 +1,5 @@
+if(MACOSX OR APPLE)
+
 set(COCOS_PLATFORM_SPECIFIC_SRC
   platform/virtual/CCApplication-virtual.cpp
   platform/mac/CCCommon-mac.mm
@@ -7,6 +9,26 @@ set(COCOS_PLATFORM_SPECIFIC_SRC
   platform/apple/CCThread-apple.mm
   platform/desktop/CCGLViewImpl-desktop.cpp
 )
+
+elseif(LINUX)
+
+include_directories(
+  /usr/include
+  /usr/include/GLFW
+  /usr/local/include/GLFW
+)
+
+set(COCOS_PLATFORM_SPECIFIC_SRC
+  platform/linux/CCStdC-linux.cpp
+  platform/linux/CCFileUtils-linux.cpp
+  platform/linux/CCCommon-linux.cpp
+  #platform/linux/CCApplication-linux.cpp
+  platform/virtual/CCApplication-virtual.cpp
+  platform/linux/CCDevice-linux.cpp
+  platform/desktop/CCGLViewImpl-desktop.cpp
+)
+
+endif()
 
 #leave andatory external stuff here also
 
