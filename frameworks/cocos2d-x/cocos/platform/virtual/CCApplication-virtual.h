@@ -109,15 +109,10 @@ public:
      */
     CC_DEPRECATED_ATTRIBUTE const std::string& getResourceRootPath(void);
     
-    void setStartupScriptFilename(const std::string& startupScriptFile);
-    
-    const std::string& getStartupScriptFilename(void);
-    
 protected:
     static Application * sm_pSharedApplication;
     
     std::string _resourceRootPath;
-    std::string _startupScriptFilename;
 };
 
 NS_CC_END

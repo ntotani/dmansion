@@ -156,16 +156,5 @@ const std::string& Application::getResourceRootPath(void)
     return _resourceRootPath;
 }
 
-void Application::setStartupScriptFilename(const std::string& startupScriptFile)
-{
-    _startupScriptFilename = startupScriptFile;
-    std::replace(_startupScriptFilename.begin(), _startupScriptFilename.end(), '\\', '/');
-}
-
-const std::string& Application::getStartupScriptFilename(void)
-{
-    return _startupScriptFilename;
-}
-
 NS_CC_END
 

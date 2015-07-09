@@ -22,7 +22,8 @@ set(COCOS_PLATFORM_SPECIFIC_SRC
   platform/linux/CCStdC-linux.cpp
   platform/linux/CCFileUtils-linux.cpp
   platform/linux/CCCommon-linux.cpp
-  platform/linux/CCApplication-linux.cpp
+  #platform/linux/CCApplication-linux.cpp
+  platform/virtual/CCApplication-virtual.cpp
   platform/linux/CCDevice-linux.cpp
   platform/desktop/CCGLViewImpl-desktop.cpp
 )
