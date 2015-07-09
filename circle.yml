@@ -1,3 +1,7 @@
+dependencies:
+    override:
+        - echo "\n" | frameworks/cocos2d-x/build/install-deps-linux.sh
+
 test:
     override:
         - frameworks/cocos2d-x/build/install-deps-linux.sh
