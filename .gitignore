@@ -40,7 +40,7 @@ ipch/
 /frameworks/runtime-src/proj.android/libs/armeabi/*
 /frameworks/runtime-src/proj.android/libs/armeabi-v7a/*
 /frameworks/runtime-src/proj.android/libs/x86/*
-bin/
+/frameworks/runtime-src/proj.android/bin/
 obj/
 gen/
 assets/
