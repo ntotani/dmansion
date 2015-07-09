@@ -116,7 +116,8 @@ cmake_install.cmake
 /frameworks/cocos2d-x/tests/*/publish/
 
 # Ignore prebuilt libraries folder
-/frameworks/cocos2d-x/external
+/frameworks/cocos2d-x/external/*
+!/frameworks/cocos2d-x/external/config.json
 /frameworks/cocos2d-x/templates/lua-template-runtime/runtime
 /frameworks/cocos2d-x/v*-deps-*.zip
 /frameworks/cocos2d-x/v*-lua-runtime-*.zip
