@@ -17,7 +17,13 @@ end
 
 TestMainScene = {
     setUp = function(self)
-        self.target = require("app.views.MainScene"):create(nil, "MainScene", {random = function() return 2 end})
+        local randSeq = {2, 2, 2, 3}
+        self.target = require("app.views.MainScene"):create(nil, "MainScene", {
+            random = function()
+                table.insert(randSeq, table.remove(randSeq, 1))
+                return randSeq[#randSeq]
+            end
+        })
         self.target:showWithScene()
         cc.Director:getInstance():mainLoop() -- run scene
     end,
@@ -53,6 +59,11 @@ TestMainScene = {
         touchBegin(0, sx, sy)
         touchMove(0, dx, dy)
         touchEnd(0, dx, dy)
+    end,
+    testEnemy = function(self)
+        luaunit.assertFalse(self.target.enemy:isVisible())
+        self:flick(100, 100, 50, 100)
+        luaunit.assertTrue(self.target.enemy:isVisible())
     end,
 }
 

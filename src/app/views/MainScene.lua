@@ -10,9 +10,14 @@ function MainScene:onCreate(ctx)
         i = math.ceil(ctx.random(ROW)),
         j = math.ceil(ctx.random(COL))
     }
+    self.enemyPos = {
+        i = math.ceil(ctx.random(ROW)),
+        j = math.ceil(ctx.random(COL))
+    }
 
     local bg = display.newSprite("bg.jpg"):move(display.center):addTo(self)
     bg:setScale(display.height / bg:getContentSize().height)
+    self.enemy = display.newSprite("enemy.png"):move(display.center):hide():addTo(self)
     self.miniMap = cc.DrawNode:create():addTo(self)
     self:drawMiniMap()
 
@@ -23,37 +28,41 @@ function MainScene:onCreate(ctx)
             prevTouch = e
             return true
         elseif e.name == "moved" and prevTouch then
+            local dir = nil
             if prevTouch.y - e.y > thre then
                 if self.curPos.i > 1 then
-                    self.curPos.i = self.curPos.i - 1
-                    prevTouch = nil
-                    self:drawMiniMap()
+                    dir = {i = -1, j = 0}
                 else
                     -- invalid up effect
                 end
             elseif prevTouch.x - e.x > thre then
                 if self.curPos.j < COL then
-                    self.curPos.j = self.curPos.j + 1
-                    prevTouch = nil
-                    self:drawMiniMap()
+                    dir = {i = 0, j = 1}
                 else
                     -- invalid right effect
                 end
             elseif e.y - prevTouch.y > thre then
                 if self.curPos.i < ROW then
-                    self.curPos.i = self.curPos.i + 1
-                    prevTouch = nil
-                    self:drawMiniMap()
+                    dir = {i = 1, j = 0}
                 else
                     -- invalid down effect
                 end
             elseif e.x - prevTouch.x > thre then
                 if self.curPos.j > 1 then
-                    self.curPos.j = self.curPos.j - 1
-                    prevTouch = nil
-                    self:drawMiniMap()
+                    dir = {i = 0, j = -1}
                 else
                     -- invalid left effect
+                end
+            end
+            if dir then
+                self.curPos.i = self.curPos.i + dir.i
+                self.curPos.j = self.curPos.j + dir.j
+                prevTouch = nil
+                self:drawMiniMap()
+                if us.isEqual(self.curPos, self.enemyPos) then
+                    self.enemy:show()
+                else
+                    self.enemy:hide()
                 end
             end
         end
