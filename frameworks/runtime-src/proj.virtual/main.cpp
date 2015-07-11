@@ -17,6 +17,26 @@ int set_delta_time_glue(lua_State* L)
     return 0;
 }
 
+int touch_glue(lua_State* L, EventTouch::EventCode code)
+{
+    intptr_t id = lua_tonumber(L, 1);
+    float x = lua_tonumber(L, 2);
+    float y = lua_tonumber(L, 3);
+    auto glPoint = vd->convertToGL({x, y});
+    if (code == EventTouch::EventCode::BEGAN) {
+        vd->getOpenGLView()->handleTouchesBegin(1, &id, &glPoint.x, &glPoint.y);
+    } else if (code == EventTouch::EventCode::MOVED) {
+        vd->getOpenGLView()->handleTouchesMove(1, &id, &glPoint.x, &glPoint.y);
+    } else {
+        vd->getOpenGLView()->handleTouchesEnd(1, &id, &glPoint.x, &glPoint.y);
+    }
+    return 0;
+}
+
+int touch_begin_glue(lua_State* L) { return touch_glue(L, EventTouch::EventCode::BEGAN); }
+int touch_move_glue(lua_State* L) { return touch_glue(L, EventTouch::EventCode::MOVED); }
+int touch_end_glue(lua_State* L) { return touch_glue(L, EventTouch::EventCode::ENDED); }
+
 class AppDelegate : private Application {
     virtual bool applicationDidFinishLaunching() {
         vd = VirtualDirector::create();
@@ -26,6 +46,9 @@ class AppDelegate : private Application {
         lua_module_register(L);
         lua_getglobal(L, "_G");
         lua_register(L, "setDeltaTime", set_delta_time_glue);
+        lua_register(L, "touchBegin", touch_begin_glue);
+        lua_register(L, "touchMove", touch_move_glue);
+        lua_register(L, "touchEnd", touch_end_glue);
         if (engine->executeScriptFile("test/main.lua"))
         {
             return false;
