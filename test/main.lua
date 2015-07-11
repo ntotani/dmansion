@@ -1,13 +1,5 @@
 local luaunit = require("test.lib.luaunit")
 
-cc.FileUtils:getInstance():setPopupNotify(false)
-cc.FileUtils:getInstance():addSearchPath("src/")
-cc.FileUtils:getInstance():addSearchPath("res/")
-
-require "config"
-CC_DISABLE_GLOBAL = false
-require "cocos.init"
-
 function testSample()
     local scene = cc.Scene:create()
     display.runScene(scene)
@@ -38,6 +30,13 @@ TestMainScene = {
         luaunit.assertEquals(self.target.curPos.i, 2)
     end,
 }
+
+cc.FileUtils:getInstance():setPopupNotify(false)
+cc.FileUtils:getInstance():addSearchPath("src/")
+cc.FileUtils:getInstance():addSearchPath("res/")
+
+require "config"
+require "cocos.init"
 
 os.exit(luaunit.LuaUnit.run('-v'))
 
