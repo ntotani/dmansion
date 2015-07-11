@@ -1,14 +1,16 @@
+local luaunit = require("test.lib.luaunit")
 
 cc.FileUtils:getInstance():setPopupNotify(false)
 cc.FileUtils:getInstance():addSearchPath("src/")
 cc.FileUtils:getInstance():addSearchPath("res/")
 
 require "config"
+CC_DISABLE_GLOBAL = false
 require "cocos.init"
 
-local function main()
+function testSample()
     local scene = cc.Scene:create()
-    cc.Director:getInstance():runWithScene(scene)
+    display.runScene(scene)
     cc.Director:getInstance():mainLoop() -- run scene
 
     local node = cc.Node:create()
@@ -18,19 +20,24 @@ local function main()
 
     setDeltaTime(5)
     cc.Director:getInstance():mainLoop() -- animation
-    assert(node:getPositionX() == 10, "node should move right")
-
-    local ms = require("app.views.MainScene"):create(nil, "MainScene", {random = function() return 1 end})
-    ms:showWithScene()
-    cc.Director:getInstance():mainLoop() -- run scene
-    assert(not tolua.isnull(ms))
-    touchBegin(0, 100, 100)
-    touchMove(0, 100, 150)
-    assert(ms.curPos.i == 2, "flick down")
+    luaunit.assertEquals(node:getPositionX(), 10)
 end
 
-local status, msg = xpcall(main, __G__TRACKBACK__)
-if not status then
-    print(msg)
-end
+TestMainScene = {
+    setUp = function(self)
+        self.target = require("app.views.MainScene"):create(nil, "MainScene", {random = function() return 1 end})
+        self.target:showWithScene()
+        cc.Director:getInstance():mainLoop() -- run scene
+    end,
+    testExist = function(self)
+        luaunit.assertFalse(tolua.isnull(self.target))
+    end,
+    testFlickDown = function(self)
+        touchBegin(0, 100, 100)
+        touchMove(0, 100, 150)
+        luaunit.assertEquals(self.target.curPos.i, 2)
+    end,
+}
+
+os.exit(luaunit.LuaUnit.run('-v'))
 

@@ -23,7 +23,6 @@ function MainScene:onCreate(ctx)
                 if self.curPos.i > 1 then
                     self.curPos.i = self.curPos.i - 1
                     prevTouch = nil
-                    dump(self.curPos)
                 else
                     -- invalid up effect
                 end
@@ -31,7 +30,6 @@ function MainScene:onCreate(ctx)
                 if self.curPos.j < COL then
                     self.curPos.j = self.curPos.j + 1
                     prevTouch = nil
-                    dump(self.curPos)
                 else
                     -- invalid right effect
                 end
@@ -39,7 +37,6 @@ function MainScene:onCreate(ctx)
                 if self.curPos.i < ROW then
                     self.curPos.i = self.curPos.i + 1
                     prevTouch = nil
-                    dump(self.curPos)
                 else
                     -- invalid down effect
                 end
@@ -47,7 +44,6 @@ function MainScene:onCreate(ctx)
                 if self.curPos.j > 1 then
                     self.curPos.j = self.curPos.j - 1
                     prevTouch = nil
-                    dump(self.curPos)
                 else
                     -- invalid left effect
                 end
