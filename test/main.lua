@@ -17,17 +17,42 @@ end
 
 TestMainScene = {
     setUp = function(self)
-        self.target = require("app.views.MainScene"):create(nil, "MainScene", {random = function() return 1 end})
+        self.target = require("app.views.MainScene"):create(nil, "MainScene", {random = function() return 2 end})
         self.target:showWithScene()
         cc.Director:getInstance():mainLoop() -- run scene
     end,
     testExist = function(self)
         luaunit.assertFalse(tolua.isnull(self.target))
     end,
+    testFlickUp = function(self)
+        self:flick(100, 100, 100, 50)
+        luaunit.assertEquals(self.target.curPos.i, 1)
+        self:flick(100, 100, 100, 50)
+        luaunit.assertEquals(self.target.curPos.i, 1)
+    end,
+    testFlickRight = function(self)
+        self:flick(100, 100, 50, 100)
+        luaunit.assertEquals(self.target.curPos.j, 3)
+        self:flick(100, 100, 50, 100)
+        luaunit.assertEquals(self.target.curPos.j, 3)
+    end,
     testFlickDown = function(self)
-        touchBegin(0, 100, 100)
-        touchMove(0, 100, 150)
-        luaunit.assertEquals(self.target.curPos.i, 2)
+        self.target.curPos.i = 4
+        self:flick(100, 100, 100, 150)
+        luaunit.assertEquals(self.target.curPos.i, 5)
+        self:flick(100, 100, 100, 150)
+        luaunit.assertEquals(self.target.curPos.i, 5)
+    end,
+    testFlickLeft = function(self)
+        self:flick(100, 100, 150, 100)
+        luaunit.assertEquals(self.target.curPos.j, 1)
+        self:flick(100, 100, 150, 100)
+        luaunit.assertEquals(self.target.curPos.j, 1)
+    end,
+    flick = function(self, sx, sy, dx, dy)
+        touchBegin(0, sx, sy)
+        touchMove(0, dx, dy)
+        touchEnd(0, dx, dy)
     end,
 }
 
