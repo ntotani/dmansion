@@ -6,12 +6,16 @@ local ROW = 5
 local COL = 3
 
 function MainScene:onCreate(ctx)
-    local bg = display.newSprite("bg.jpg"):move(display.center):addTo(self)
-    bg:setScale(display.height / bg:getContentSize().height)
     self.curPos = {
         i = math.ceil(ctx.random(ROW)),
         j = math.ceil(ctx.random(COL))
     }
+
+    local bg = display.newSprite("bg.jpg"):move(display.center):addTo(self)
+    bg:setScale(display.height / bg:getContentSize().height)
+    self.miniMap = cc.DrawNode:create():addTo(self)
+    self:drawMiniMap()
+
     local prevTouch = nil
     local thre = 10
     display.newLayer():addTo(self):onTouch(function(e)
@@ -23,6 +27,7 @@ function MainScene:onCreate(ctx)
                 if self.curPos.i > 1 then
                     self.curPos.i = self.curPos.i - 1
                     prevTouch = nil
+                    self:drawMiniMap()
                 else
                     -- invalid up effect
                 end
@@ -30,6 +35,7 @@ function MainScene:onCreate(ctx)
                 if self.curPos.j < COL then
                     self.curPos.j = self.curPos.j + 1
                     prevTouch = nil
+                    self:drawMiniMap()
                 else
                     -- invalid right effect
                 end
@@ -37,6 +43,7 @@ function MainScene:onCreate(ctx)
                 if self.curPos.i < ROW then
                     self.curPos.i = self.curPos.i + 1
                     prevTouch = nil
+                    self:drawMiniMap()
                 else
                     -- invalid down effect
                 end
@@ -44,6 +51,7 @@ function MainScene:onCreate(ctx)
                 if self.curPos.j > 1 then
                     self.curPos.j = self.curPos.j - 1
                     prevTouch = nil
+                    self:drawMiniMap()
                 else
                     -- invalid left effect
                 end
@@ -52,6 +60,20 @@ function MainScene:onCreate(ctx)
     end)
     self:onUpdate(function(dt)
     end)
+end
+
+function MainScene:drawMiniMap()
+    self.miniMap:clear()
+    local len = 9
+    local idx2pos = function(idx) return idx.j * len * 2, display.height - idx.i * len * 2 end
+    for i = 1, ROW do
+        for j = 1, COL do
+            local x, y = idx2pos({i = i, j = j})
+            self.miniMap:drawSolidRect(cc.p(x, y - len), cc.p(x + len, y), cc.c4f(0, 0, 0, 1))
+        end
+    end
+    local curX, curY = idx2pos(self.curPos)
+    self.miniMap:drawPoint(cc.p(curX + len / 2, curY - len / 2), len / 2, cc.c4f(1, 0, 0, 1))
 end
 
 function MainScene:flickEffect()
