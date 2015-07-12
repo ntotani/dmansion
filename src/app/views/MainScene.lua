@@ -17,56 +17,23 @@ function MainScene:onCreate(ctx)
 
     local bg = display.newSprite("bg.jpg"):move(display.center):addTo(self)
     bg:setScale(display.height / bg:getContentSize().height)
-    self.enemy = display.newSprite("enemy.png"):move(display.center):hide():addTo(self)
+
+    self.enemy = cc.Node:create():hide():addTo(self)
+    display.newSprite("enemy.png"):move(display.center):addTo(self.enemy)
+    cc.Label:createWithSystemFont("@SakeRice", "", 24):move(display.cx, display.cy + 250):addTo(self.enemy):enableShadow(cc.c4b(0, 0, 0, 255))
+    local gauge = cc.DrawNode:create():addTo(self.enemy)
+    gauge:drawSolidRect(cc.p(20, display.cy + 220), cc.p(display.width - 20, display.cy + 235), cc.c4f(1, 1, 1, 1))
+    gauge:drawSolidRect(cc.p(22, display.cy + 222), cc.p(display.width - 22, display.cy + 233), cc.c4f(1, 0, 0, 1))
+    local console = cc.DrawNode:create():addTo(self.enemy)
+    console:drawSolidRect(cc.p(10, 60), cc.p(display.width - 10, 160), cc.c4f(1, 1, 1, 1))
+    console:drawSolidRect(cc.p(15, 65), cc.p(display.width - 15, 155), cc.c4f(0, 0, 0, 1))
+    self.message = cc.Label:createWithSystemFont("@SakeRiceがあらわれた", "", 14):align(cc.p(0, 1), 25, 150):addTo(self.enemy)
+
     self.miniMap = cc.DrawNode:create():addTo(self)
     self:drawMiniMap()
 
-    local prevTouch = nil
-    local thre = 10
-    display.newLayer():addTo(self):onTouch(function(e)
-        if e.name == "began" then
-            prevTouch = e
-            return true
-        elseif e.name == "moved" and prevTouch then
-            local dir = nil
-            if prevTouch.y - e.y > thre then
-                if self.curPos.i > 1 then
-                    dir = {i = -1, j = 0}
-                else
-                    -- invalid up effect
-                end
-            elseif prevTouch.x - e.x > thre then
-                if self.curPos.j < COL then
-                    dir = {i = 0, j = 1}
-                else
-                    -- invalid right effect
-                end
-            elseif e.y - prevTouch.y > thre then
-                if self.curPos.i < ROW then
-                    dir = {i = 1, j = 0}
-                else
-                    -- invalid down effect
-                end
-            elseif e.x - prevTouch.x > thre then
-                if self.curPos.j > 1 then
-                    dir = {i = 0, j = -1}
-                else
-                    -- invalid left effect
-                end
-            end
-            if dir then
-                self.curPos.i = self.curPos.i + dir.i
-                self.curPos.j = self.curPos.j + dir.j
-                prevTouch = nil
-                self:drawMiniMap()
-                if us.isEqual(self.curPos, self.enemyPos) then
-                    self.enemy:show()
-                else
-                    self.enemy:hide()
-                end
-            end
-        end
-    end)
+    self.prevTouch = nil
+    self.touchLayer = display.newLayer():addTo(self):onTouch(us.bind(self.onTouch, self))
     self:onUpdate(function(dt)
     end)
 end
@@ -97,6 +64,54 @@ function MainScene:flickEffect()
         ),
         cc.RemoveSelf:create()
     ))
+end
+
+function MainScene:onTouch(e)
+    local thre = 10
+    if e.name == "began" then
+        self.prevTouch = e
+        return true
+    elseif e.name == "moved" and self.prevTouch then
+        local dir = nil
+        if self.prevTouch.y - e.y > thre then
+            if self.curPos.i > 1 then
+                dir = {i = -1, j = 0}
+            else
+                -- invalid up effect
+            end
+        elseif self.prevTouch.x - e.x > thre then
+            if self.curPos.j < COL then
+                dir = {i = 0, j = 1}
+            else
+                -- invalid right effect
+            end
+        elseif e.y - self.prevTouch.y > thre then
+            if self.curPos.i < ROW then
+                dir = {i = 1, j = 0}
+            else
+                -- invalid down effect
+            end
+        elseif e.x - self.prevTouch.x > thre then
+            if self.curPos.j > 1 then
+                dir = {i = 0, j = -1}
+            else
+                -- invalid left effect
+            end
+        end
+        if dir then
+            self.curPos.i = self.curPos.i + dir.i
+            self.curPos.j = self.curPos.j + dir.j
+            self.prevTouch = nil
+            if us.isEqual(self.curPos, self.enemyPos) then
+                self.touchLayer:removeTouch()
+                self.miniMap:clear()
+                self.enemy:show()
+            else
+                self:drawMiniMap()
+                self.enemy:hide()
+            end
+        end
+    end
 end
 
 return MainScene

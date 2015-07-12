@@ -64,6 +64,8 @@ TestMainScene = {
         luaunit.assertFalse(self.target.enemy:isVisible())
         self:flick(100, 100, 50, 100)
         luaunit.assertTrue(self.target.enemy:isVisible())
+        self:flick(100, 100, 150, 100)
+        luaunit.assertEquals(self.target.curPos.j, 3)
     end,
 }
 
