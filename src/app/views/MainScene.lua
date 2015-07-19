@@ -18,7 +18,7 @@ function MainScene:onCreate(ctx)
     local bg = display.newSprite("bg.jpg"):move(display.center):addTo(self)
     bg:setScale(display.height / bg:getContentSize().height)
 
-    self.enemy = cc.Node:create():hide():addTo(self)
+    self.enemy = cc.Node:create():addTo(self)
     display.newSprite("enemy.png"):move(display.center):addTo(self.enemy)
     cc.Label:createWithSystemFont("@SakeRice", "", 24):move(display.cx, display.cy + 250):addTo(self.enemy):enableShadow(cc.c4b(0, 0, 0, 255))
     local gauge = cc.DrawNode:create():addTo(self.enemy)
@@ -28,14 +28,33 @@ function MainScene:onCreate(ctx)
     console:drawSolidRect(cc.p(10, 60), cc.p(display.width - 10, 160), cc.c4f(1, 1, 1, 1))
     console:drawSolidRect(cc.p(15, 65), cc.p(display.width - 15, 155), cc.c4f(0, 0, 0, 1))
     self.message = cc.Label:createWithSystemFont("@SakeRiceがあらわれた", "", 14):align(cc.p(0, 1), 25, 150):addTo(self.enemy)
+    self.attackBtn = cc.Menu:create(cc.MenuItemImage:create("attack.png", "attack.png"):onClicked(function()
+        self.attackBtn:hide()
+        local dmg = ctx.random(3, 7)
+        self.message:setString("@SakeRiceに" .. dmg .. "ダメージ")
+        local speed = 30
+        local maxHp = 10
+        local hp = 10
+        gauge:onUpdate(function(dt)
+            hp = hp - speed * dt
+            hp = math.max(maxHp - dmg, hp)
+            gauge:clear()
+            gauge:drawSolidRect(cc.p(20, display.cy + 220), cc.p(display.width - 20, display.cy + 235), cc.c4f(1, 1, 1, 1))
+            gauge:drawSolidRect(cc.p(22, display.cy + 222), cc.p(display.width - 22, display.cy + 233), cc.c4f(0, 0, 0, 1))
+            gauge:drawSolidRect(cc.p(22, display.cy + 222), cc.p((display.width - 22 - 22) * hp / maxHp + 22, display.cy + 233), cc.c4f(1, 0, 0, 1))
+            if hp <= maxHp - dmg then
+                gauge:onUpdate(function()end)
+                touchLayer:onTouch(function()
+                end)
+            end
+        end)
+    end)):move(display.cx, 40):addTo(self.enemy)
 
     self.miniMap = cc.DrawNode:create():addTo(self)
     self:drawMiniMap()
 
     self.prevTouch = nil
     self.touchLayer = display.newLayer():addTo(self):onTouch(us.bind(self.onTouch, self))
-    self:onUpdate(function(dt)
-    end)
 end
 
 function MainScene:drawMiniMap()
